@@ -1,0 +1,89 @@
+
+//Database Schema
+Schema: snack_hotel_management
+
+Tables:
+- login(pin, employee_id, password)
+- guest_register(guest_id, name, room_no, checkin_date, checkout_date)
+- order(pin, date, item_name, quantity, price)
+- room(pin, room_no, status, charges_per_day)
+
+This schema supports staff login, guest registration, snack ordering, and room status tracking.
+
+//DAO Classes
+
+OrderDAO.java
+public void addOrder(String pin, String item, int quantity, double price) {
+    // Code to insert order details into database
+}
+public List<String> getGuestOrders(String guestId) {
+    // Code to fetch orders made by a guest
+    return null; // placeholder
+}
+
+RoomDAO.java
+public boolean isRoomAvailable(int roomNo) {
+    // Check if room is available
+    return true; // placeholder
+}
+public void updateRoomStatus(int roomNo, String status) {
+    // Update room availability/status in DB
+}
+
+GuestDAO.java
+public void registerGuest(String guestId, String name, int roomNo, String checkin, String checkout) {
+    // Insert guest registration details into DB
+}
+public boolean isGuestCheckedIn(String guestId) {
+    // Check if guest is currently checked in
+    return true; // placeholder
+}
+
+LoginDAO.java
+public boolean login(String empId, String pin) {
+    // Validate employee login credentials
+    return true; // placeholder
+}
+
+//UI Responsiveness and Accessibility
+
+Implemented using:
+- ActionListener for button clicks and other actions
+- JOptionPane for popup messages and user feedback
+- Keyboard-friendly navigation for form elements
+
+Example:
+orderButton.addActionListener(this);
+@Override
+public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == orderButton) {
+        // process order
+        JOptionPane.showMessageDialog(null, "Order Placed Successfully");
+    }
+}
+
+//UI Placement and Alignment
+
+All forms use absolute positioning for precise layout control.
+
+Example from GuestRegistration.java:
+nameField.setBounds(250, 100, 200, 25);
+roomField.setBounds(250, 140, 200, 25);
+checkinDateField.setBounds(250, 180, 200, 25);
+checkoutDateField.setBounds(250, 220, 200, 25);
+registerButton.setBounds(250, 270, 150, 30);
+
+Fields are grouped logically for easy data entry.
+
+//UI Aesthetics
+
+Consistent design across all forms:
+- Fonts: Raleway, SansSerif, System
+- Background images themed to hotel/snack environment
+- Good color contrast for readability
+
+Example:
+titleLabel.setFont(new Font("Raleway", Font.BOLD, 22));
+getContentPane().setBackground(new Color(245, 245, 245)); // light gray background
+submitButton.setBackground(new Color(0, 102, 204)); // blue button
+submitButton.setForeground(Color.WHITE);
