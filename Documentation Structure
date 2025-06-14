@@ -1,0 +1,20 @@
+# SNAK-Hotel Management System
+
+## Features
+- Secure user authentication with Password protection
+- Complete Management processes (such as Add Rooms,Update Sevices,etc)
+- Employee Management and Creating Their Ids.
+- Mini statement generation
+- Robust error handling and data validation
+
+## Technical Stack
+- Java 8+
+- MySQL Database
+- Swing for UI
+
+## Setup Instructions
+
+### Database Configuration
+1. Create MySQL database:
+   ```sql
+   CREATE DATABASE bankmanagementsystem;
