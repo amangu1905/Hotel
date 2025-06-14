@@ -1,0 +1,28 @@
+bank.management.system/
+├── DAO/
+│ ├── UserDAO.java # Handles login, signup
+│ └── PaymentDAO.java # Adds Payments, fetches mini statements
+├── Src
+│ ├── Splash.java
+│ ├── Login.java
+│ ├── Dashboard.java
+│ ├── Reception.java
+   ── NewCustomer.java 
+   ── Room.java
+   ── Department.java
+   ── Employee.java
+   ── CustomerInfo.java
+   ── ManagerInfo.jaava
+   ── PickUp.java
+   ── CheckOut.java
+│ ├── Admin.java
+   ── AddEmployee.java
+   ── AddRoom.java
+   ── AddDriver.java
+
+├── Con.java # JDBC Connection class
+├── resources/
+│   └── database.sql
+│
+├── README.md
+└── .gitignore
