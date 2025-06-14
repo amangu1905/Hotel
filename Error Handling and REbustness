@@ -10,7 +10,7 @@ public class PaymentDAO implements AutoCloseable {
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/hotelmanagementsystem",
                 "root",
-                "Divyan@2006"
+                "Aman@123$"
             );
         } catch (SQLException e) {
             throw new SQLException("Failed to connect to the hotel database", e);
