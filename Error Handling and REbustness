@@ -1,0 +1,57 @@
+/**
+ * Data Access Object for hotel payment operations
+ * Implements robust error handling and transaction management
+ */
+public class PaymentDAO implements AutoCloseable {
+    private Connection conn;
+
+    public PaymentDAO() throws SQLException {
+        try {
+            conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/hotelmanagementsystem",
+                "root",
+                "Divyan@2006"
+            );
+        } catch (SQLException e) {
+            throw new SQLException("Failed to connect to the hotel database", e);
+        }
+    }
+
+    /**
+     * Records a new guest payment with validation
+     * 
+     * @param guestId ID of the guest making the payment
+     * @param serviceType Type of service (e.g., "Room", "Food", "Laundry")
+     * @param amount Amount paid
+     * @throws SQLException for database errors
+     * @throws IllegalArgumentException for invalid inputs
+     */
+    public void addPayment(String guestId, String serviceType, double amount)
+        throws SQLException, IllegalArgumentException {
+        
+        if (serviceType == null || serviceType.trim().isEmpty()) {
+            throw new IllegalArgumentException("Service type must be provided");
+        }
+
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero");
+        }
+
+        String query = "INSERT INTO payments(guest_id, date, service_type, amount) VALUES (?, NOW(), ?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, guestId);
+            stmt.setString(2, serviceType);
+            stmt.setDouble(3, amount);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Failed to record payment", e);
+        }
+    }
+
+    @Override
+    public void close() throws SQLException {
+        if (conn != null) {
+            conn.close();
+        }
+    }
+}
